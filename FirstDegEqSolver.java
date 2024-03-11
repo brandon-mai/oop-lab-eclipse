@@ -28,7 +28,7 @@ public class FirstDegEqSolver {
         }
 
         JOptionPane.showMessageDialog(null, strNotification,
-                "Double calculations", JOptionPane.INFORMATION_MESSAGE);
+                "First-degree one-variable solver", JOptionPane.INFORMATION_MESSAGE);
         System.exit(0);
     }
 }
