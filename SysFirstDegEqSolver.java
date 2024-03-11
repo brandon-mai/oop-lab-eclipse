@@ -1,4 +1,4 @@
-// Example 2.2.6 part 2: System of first-degree equations with two variables solver
+// Example 2.2.6 part 2: System of first-degree two-variable equations solver
 
 import java.util.Scanner;
 
@@ -28,7 +28,7 @@ public class SysFirstDegEqSolver {
         System.out.println(a2 + "x1 + " + b2 + "x2 = " + c2);
 
         if (a1 / a2 == b1 / b2) {
-            if (a1 / a2 == c1 / c2) {System.out.println("Infinite solution.");}
+            if (a1 / a2 == c1 / c2) {System.out.println("Infinitely many solutions.");}
             else {System.out.println("No solution.");}
         } else {
             double D = a1 * b2 - a2 * b1;
