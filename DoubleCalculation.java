@@ -22,7 +22,11 @@ public class DoubleCalculation {
         strNotification += "Sum: " + (num1 + num2) + "\n";
         strNotification += "Difference: " + (num1 - num2) + "\n";
         strNotification += "Product: " + (num1 * num2) + "\n";
-        strNotification += "Quotient: " + (num1 / num2);
+        if (num2 == 0) {
+            strNotification += "Can't divide by zero.";
+        } else {
+            strNotification += "Quotient: " + (num1 / num2);
+        }
 
         JOptionPane.showMessageDialog(null, strNotification,
                 "Double calculations", JOptionPane.INFORMATION_MESSAGE);
