@@ -24,7 +24,7 @@ public class FirstDegEqSolver {
             else {strNotification += "No x satisfies.";}
         } else {
             double x = -b / a;
-            strNotification += "x is " + x;
+            strNotification += "Solution is " + x;
         }
 
         JOptionPane.showMessageDialog(null, strNotification,
