@@ -1,4 +1,4 @@
-// Example 2: FirstDialog.java
+package Lab01;// Example 2: FirstDialog.java
 
 import javax.swing.JOptionPane;
 public class FirstDialog {

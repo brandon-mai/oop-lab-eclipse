@@ -1,4 +1,4 @@
-// Example 1: HelloWorld.java
+package Lab01;// Example 1: HelloWorld.java
 
 public class HelloWorld {
 

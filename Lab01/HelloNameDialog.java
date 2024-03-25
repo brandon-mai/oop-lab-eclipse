@@ -1,4 +1,4 @@
-// Example 3: HelloNameDialog.java
+package Lab01;// Example 3: HelloNameDialog.java
 
 import javax.swing.JOptionPane;
 public class HelloNameDialog {
