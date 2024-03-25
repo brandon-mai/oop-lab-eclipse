@@ -1,4 +1,4 @@
-package Lab02.AimsProject.src;
+//package Lab02.AimsProject.src;
 
 public class DigitalVideoDisc {
 	// Attributes
