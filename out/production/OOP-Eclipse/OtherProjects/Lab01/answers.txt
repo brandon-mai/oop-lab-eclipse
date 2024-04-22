@@ -1,0 +1,6 @@
+6.1 Questions
+Q - What happens if users choose “Cancel”?
+A - The message is still "You've chosen: No". This is due to the YES_OPTION which only return "Yes" to choosing "Yes, and returning "No" to anything else.
+
+Q - How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do” and “I don’t” (Suggestion: Use Javadocs or using Eclipse/Netbean IDE help).
+A - To leave only 2 options, you can add "JOptionPane.YES_NO_OPTION" as a parameter after the message. If you want to customize buttons, use showOptionDialog instead of showConfirmDialog.
