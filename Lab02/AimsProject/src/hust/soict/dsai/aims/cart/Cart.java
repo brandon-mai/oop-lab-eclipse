@@ -1,64 +1,56 @@
 package Lab02.AimsProject.src.hust.soict.dsai.aims.cart;
 
 import Lab02.AimsProject.src.hust.soict.dsai.aims.media.DigitalVideoDisc;
+import Lab02.AimsProject.src.hust.soict.dsai.aims.media.Media;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private DigitalVideoDisc[] itemsOrdered =
-			new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
-	private int qtyOrdered = 0;
-	
-	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
-		if (qtyOrdered == MAX_NUMBERS_ORDERED) {
-			System.out.println("The cart is full. Cannot add new disc.");
+
+	private ArrayList<Media> itemsOrdered = new ArrayList<>();
+
+	public ArrayList<Media> getItemsOrdered() {
+		return itemsOrdered;
+	}
+
+	public void clear() {
+		itemsOrdered.clear();
+	}
+
+	public void addMedia(Media media) {
+		if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
+			itemsOrdered.add(media);
+			System.out.println("Added " + media.getTitle() + " to cart.");
 		} else {
-			itemsOrdered[qtyOrdered] = disc;
-			qtyOrdered++;
-			if (qtyOrdered == MAX_NUMBERS_ORDERED) {
-				System.out.println("The cart is almost full.");
-			} else {
-				System.out.println("The disc has been added.");
-			}
+			System.out.println("The cart is full.");
 		}
 	}
-	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
-		DigitalVideoDisc[] temp = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
-		int i = 0;
-		for (DigitalVideoDisc orderedDisc : itemsOrdered) {
-			if (orderedDisc == disc) {
-				System.out.println("Removed disc.");
-			} else {
-				temp[i] = orderedDisc;
-				i++;
-			}
+
+	public void removeMedia(Media media) {
+		if (itemsOrdered.contains(media)) {
+			itemsOrdered.remove(media);
+			System.out.println("Removed " + media.getTitle() + " from cart.");
+		} else {
+			System.out.println(media.getTitle() + " not found in cart.");
 		}
-		itemsOrdered = Arrays.copyOf(temp, MAX_NUMBERS_ORDERED);
-		qtyOrdered--;
 	}
+
 	public float totalCost() {
-		float cost = 0;
-		for (DigitalVideoDisc disc : itemsOrdered) {
-			if (disc != null) {
-				cost += disc.getCost();
-			}
-        }
-		return cost;
+		return itemsOrdered.stream().map(Media::getCost).reduce(0f, Float::sum);
 	}
 
 	public void print() {
 		List<String> cartPrint = new LinkedList<>();
 		cartPrint.add("Ordered Items:");
 		int maxPrintLength = 0;
-		for (DigitalVideoDisc disc : itemsOrdered) {
-			if (disc != null) {
-				maxPrintLength = Math.max(maxPrintLength, disc.toString().length());
-				cartPrint.add(disc.toString());
+		for (Media media : itemsOrdered) {
+			if (media != null) {
+				maxPrintLength = Math.max(maxPrintLength, media.toString().length());
+				cartPrint.add(media.toString());
 			}
 		}
+		maxPrintLength = Math.max(maxPrintLength, 4);
 		int halfPrintLength = (maxPrintLength - 4) / 2;
 		cartPrint.add("Total cost: " + totalCost());
 		cartPrint.addFirst("*".repeat(halfPrintLength) + "CART" + "*".repeat(maxPrintLength - 4 - halfPrintLength));
@@ -67,13 +59,18 @@ public class Cart {
 		System.out.println(String.join("\n", cartPrint));
 	}
 
-	public DigitalVideoDisc searchByTitle(String title) {
-		for (DigitalVideoDisc disc : itemsOrdered) {
-			if (disc != null && disc.isMatch(title)) {
-				return disc;
-			}
-		}
-		System.out.println("DVD titled " + title + ": No match is found.");
-		return null;
+	public Media searchByTitle(String title) {
+		return itemsOrdered
+				.stream()
+				.filter(m -> m.getTitle().equals(title))
+				.findFirst().orElse(null);
+	}
+
+	public void sortByCostTitle() {
+		Collections.sort(itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+	}
+
+	public void sortByTitleCost() {
+		Collections.sort(itemsOrdered, Media.COMPARE_BY_TITLE_COST);
 	}
 }

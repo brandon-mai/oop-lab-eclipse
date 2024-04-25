@@ -1,45 +1,50 @@
 package Lab02.AimsProject.src.hust.soict.dsai.aims.store;
 
-import Lab02.AimsProject.src.hust.soict.dsai.aims.media.DigitalVideoDisc;
+import Lab02.AimsProject.src.hust.soict.dsai.aims.media.Media;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Store {
-    DigitalVideoDisc[] itemsInStore;
+    private final List<Media> itemsInStore = new ArrayList<>();
 
-    public void addDVD(DigitalVideoDisc disc) {
-        if (itemsInStore == null) {
-            itemsInStore = new DigitalVideoDisc[1];
-            itemsInStore[0] = disc;
+    public void addMedia(Media media) {
+        itemsInStore.add(media);
+        System.out.println("Added " + media.getTitle() + " to store.");
+    }
+
+    public void removeMedia(Media media) {
+        if (itemsInStore.contains(media)) {
+            itemsInStore.remove(media);
+            System.out.println("Removed " + media.getTitle() + " from store.");
         } else {
-            DigitalVideoDisc[] newItemsInStore = new DigitalVideoDisc[itemsInStore.length + 1];
-            for (int i = 0; i < itemsInStore.length; i++) {
-                newItemsInStore[i] = itemsInStore[i];
-            }
-            newItemsInStore[itemsInStore.length] = disc;
-            itemsInStore = newItemsInStore;
+            System.out.println(media.getTitle() + " not found in store.");
         }
     }
 
-    public void removeDVD(DigitalVideoDisc disc) {
-        boolean found = false;
-        if (itemsInStore != null) {
-            DigitalVideoDisc[] temp = new DigitalVideoDisc[itemsInStore.length];
-            int i = 0;
-            for (DigitalVideoDisc storedDisc : itemsInStore) {
-                if (storedDisc == disc) {
-                    found = true;
-                } else {
-                    temp[i] = storedDisc;
-                    i++;
-                }
-            }
-            if (found) {
-                itemsInStore = Arrays.copyOf(temp, itemsInStore.length - 1);
-                System.out.println("Disc removed");
-                return;
+    public void print() {
+        List<String> storePrint = new LinkedList<>();
+        storePrint.add("Store Items:");
+        int maxPrintLength = 0;
+        for (Media media : itemsInStore) {
+            if (media != null) {
+                maxPrintLength = Math.max(maxPrintLength, media.toString().length());
+                storePrint.add(media.toString());
             }
         }
-        System.out.println("Disc not found");
+        maxPrintLength = Math.max(maxPrintLength, 5);
+        int halfPrintLength = (maxPrintLength - 5) / 2;
+        storePrint.addFirst("*".repeat(halfPrintLength) + "STORE" + "*".repeat(maxPrintLength - 5 - halfPrintLength));
+        storePrint.add("*".repeat(maxPrintLength));
+
+        System.out.println(String.join("\n", storePrint));
+    }
+
+    public Media searchByTitle(String title) {
+        return itemsInStore
+                .stream()
+                .filter(m -> m.getTitle().equals(title))
+                .findFirst().orElse(null);
     }
 }

@@ -6,8 +6,9 @@ import java.util.List;
 public class Book extends Media {
     private List<String> authors = new ArrayList<String>();
 
-    public Book() {
-        // TODO Auto-generated constructor stub
+    public Book(String title) {
+        super();
+        this.setTitle(title);
     }
 
     public void addAuthor(String authorName) {
@@ -26,5 +27,10 @@ public class Book extends Media {
         } else {
             System.out.println("Author " + authorName + " not found.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Book - " + getTitle() + " - " + getCategory() + " - " + authors;
     }
 }

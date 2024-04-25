@@ -1,27 +1,6 @@
 package Lab02.AimsProject.src.hust.soict.dsai.aims.media;
 
-public class DigitalVideoDisc extends Media	{
-	// Attributes
-	private String director;
-	private int length;
-	
-	// Getters and Setters
-	public String getDirector() {
-		return director;
-	}
-
-	public void setDirector(String director) {
-		this.director = director;
-	}
-
-	public void setLength(int length) {
-		this.length = length;
-	}
-
-	public int getLength() {
-		return length;
-	}
-
+public class DigitalVideoDisc extends Disc implements Playable {
 	// Constructors
 	public DigitalVideoDisc(String title) {
 		super();
@@ -60,5 +39,11 @@ public class DigitalVideoDisc extends Media	{
 
 	public boolean isMatch(String title) {
 		return this.getTitle().equals(title);
+	}
+
+	@Override
+	public void play() {
+		System.out.println("Playing DVD: " + this.getTitle());
+		System.out.println("DVD length: " + this.getLength());
 	}
 }
