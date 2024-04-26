@@ -1,0 +1,12 @@
+Q: What class should implement the Comparable interface?
+A: The class directedly being compared is the one that should (have to) implement the Comparable interface. In this case, it's the Media class.
+
+
+Q: In those classes, how should you implement the compareTo() method to reflect the ordering that we want?
+A: The calculations is pretty similar to Comparator's compare() method, as both require comparisons that return an integer. But as for compare(), we only need the peer object as parameter instead of 2 objects.
+
+Q: Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+A: We cannot. The compare() method that we are overriding is also known as the "natural order", which is used when we have comparison operators (<>=). And naturally we cannot have conflicting natural orderings.
+
+Q: Suppose the DVDs have a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
+A: We can create 2 Comparators, one for Media and one specifically for DVD. Or we can have base implementation of Comparable interface in Media, which will be overriden later in DVD class.
