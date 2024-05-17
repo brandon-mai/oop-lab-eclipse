@@ -9,6 +9,10 @@ import java.util.List;
 public class Store {
     private final List<Media> itemsInStore = new ArrayList<>();
 
+    public List<Media> getItemsInStore() {
+        return itemsInStore;
+    }
+
     public void addMedia(Media media) {
         itemsInStore.add(media);
         System.out.println("Added " + media.getTitle() + " to store.");
