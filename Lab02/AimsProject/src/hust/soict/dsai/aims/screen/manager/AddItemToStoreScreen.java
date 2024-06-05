@@ -1,4 +1,4 @@
-package Lab02.AimsProject.src.hust.soict.dsai.aims.screen.manager;
+package hust.soict.dsai.aims.screen.manager;
 
 import javax.swing.*;
 import java.awt.*;

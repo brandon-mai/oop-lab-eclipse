@@ -1,8 +1,9 @@
-package Lab02.AimsProject.src.hust.soict.dsai.aims;
+package hust.soict.dsai.aims;
 
-import Lab02.AimsProject.src.hust.soict.dsai.aims.cart.Cart;
-import Lab02.AimsProject.src.hust.soict.dsai.aims.media.*;
-import Lab02.AimsProject.src.hust.soict.dsai.aims.store.Store;
+import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
+import hust.soict.dsai.aims.media.*;
+import hust.soict.dsai.aims.store.Store;
 
 import java.util.Scanner;
 
@@ -124,8 +125,12 @@ public class Aims {
 						System.out.println("Enter the title of the media to be played: ");
 						Media mediaToPlay = store.searchByTitle(scanner.nextLine());
 						if (mediaToPlay instanceof Playable) {
-							((Playable) mediaToPlay).play();
-						} else if (mediaToPlay != null) {
+                            try {
+                                ((Playable) mediaToPlay).play();
+                            } catch (PlayerException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (mediaToPlay != null) {
 							System.out.println("Media is not playable.");
 						} else {
 							System.out.println("Media not found.");
@@ -175,8 +180,12 @@ public class Aims {
 						break;
 					case 2:
 						if (isPlayable) {
-							((Playable) media).play();
-							backed = true;
+                            try {
+                                ((Playable) media).play();
+                            } catch (PlayerException e) {
+                                e.printStackTrace();
+                            }
+                            backed = true;
 							break;
 						}
 					default:
@@ -248,8 +257,12 @@ public class Aims {
 						System.out.println("Enter the title of the media to be played: ");
 						Media mediaToPlay = cart.searchByTitle(scanner.nextLine());
 						if (mediaToPlay instanceof Playable) {
-							((Playable) mediaToPlay).play();
-						} else if (mediaToPlay != null) {
+                            try {
+                                ((Playable) mediaToPlay).play();
+                            } catch (PlayerException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (mediaToPlay != null) {
 							System.out.println("Media is not playable.");
 						} else {
 							System.out.println("Media not found.");

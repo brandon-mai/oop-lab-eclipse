@@ -1,6 +1,6 @@
-package Lab02.AimsProject.src.hust.soict.dsai.aims.screen.manager;
+package hust.soict.dsai.aims.screen.manager;
 
-import Lab02.AimsProject.src.hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 import javax.swing.*;
 import java.awt.*;

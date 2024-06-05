@@ -1,6 +1,6 @@
-package Lab02.AimsProject.src.hust.soict.dsai.aims.store;
+package hust.soict.dsai.aims.store;
 
-import Lab02.AimsProject.src.hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.Media;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

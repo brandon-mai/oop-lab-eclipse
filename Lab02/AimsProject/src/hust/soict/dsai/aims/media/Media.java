@@ -1,4 +1,4 @@
-package Lab02.AimsProject.src.hust.soict.dsai.aims.media;
+package hust.soict.dsai.aims.media;
 
 import java.util.Comparator;
 
@@ -50,7 +50,11 @@ public abstract class Media {
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Media) {
-			return ((Media) obj).getTitle().equals(title);
+			try {
+				return ((Media) obj).getTitle().equals(title) && ((Media) obj).getCost() == cost;
+			} catch (NullPointerException e) {
+				return false;
+			}
 		}
 		return false;
 	}

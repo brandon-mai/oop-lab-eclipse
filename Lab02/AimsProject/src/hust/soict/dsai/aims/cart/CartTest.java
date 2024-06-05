@@ -1,9 +1,9 @@
-package Lab02.AimsProject.src.hust.soict.dsai.aims.cart;
+package hust.soict.dsai.aims.cart;
 
-import Lab02.AimsProject.src.hust.soict.dsai.aims.media.Book;
-import Lab02.AimsProject.src.hust.soict.dsai.aims.media.CompactDisc;
-import Lab02.AimsProject.src.hust.soict.dsai.aims.media.DigitalVideoDisc;
-import Lab02.AimsProject.src.hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.Book;
+import hust.soict.dsai.aims.media.CompactDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
 
 import java.util.ArrayList;
 import java.util.List;
